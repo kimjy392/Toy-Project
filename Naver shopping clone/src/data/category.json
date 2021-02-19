@@ -1,0 +1,20 @@
+{
+  "depth" : 1,
+  "category" :[
+    {
+      "id" : 1,
+      "categoryName" : "연필"
+    }, {
+      "id" : 2,
+      "categoryName" : "샤프"
+    }, {
+      "id" : 3,
+      "categoryName" : "연필캡"
+    }, {
+      "id" : 4,
+      "categoryName" : "지우개"
+    }
+  ],
+  "subcategory" : [
+  ]
+}

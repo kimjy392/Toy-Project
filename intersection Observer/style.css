@@ -1,0 +1,25 @@
+.box {
+  margin: auto;
+  margin-top: 10px;
+  height: 250px;
+  width: 250px;
+  background-color: black;
+}
+
+
+.box-wrap {
+  margin: auto;
+  width: 1200px;
+  overflow-y: scroll;
+  height: 600px;
+  /* display: flex; */
+  /* flex-direction: column; */
+}
+
+.big {
+  height: 1000px;
+}
+
+.red {
+  background-color: red;
+}

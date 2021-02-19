@@ -26,8 +26,28 @@ class ImageInfo {
 
   render() {
     if (this.data.visible) {
+      const { name, url } = this.data.image
+      console.log(this.data)
+      this.$imageInfo.innerHTML = `
+      <div class="content-wrapper">
+        <div class="title">
+          <span>${name}</span>
+          <div class="close">x</div>
+        </div>
+        <img src="${url}" alt="${name}"/>        
+        <div class="description">
+          <div class="temperament">성격 : </div>
+          <div class="origin">태생 : </div>
+        </div>
+      </div>`;
       this.getCatInfo(this.data.image.id)
-      
+      this.$imageInfo.style.display = "block";
+      const closeButton = this.$imageInfo.querySelector('.close')
+      closeButton.addEventListener('click', () => {
+        if (this.$imageInfo.style.display === 'block') {
+          this.closeImageInfo()
+        }
+      })
     } else {
       this.$imageInfo.style.display = "none";
     }
@@ -39,25 +59,11 @@ class ImageInfo {
 
   async getCatInfo (catId) {
     const catInfo = await api.fetchCatInfo(catId)
-    const { name, url, temperament, origin } = catInfo.data
-    this.$imageInfo.innerHTML = `
-        <div class="content-wrapper">
-          <div class="title">
-            <span>${name}</span>
-            <div class="close">x</div>
-          </div>
-          <img src="${url}" alt="${name}"/>        
-          <div class="description">
-            <div>성격: ${temperament}</div>
-            <div>태생: ${origin}</div>
-          </div>
-        </div>`;
-    this.$imageInfo.style.display = "block";
-    const closeButton = this.$imageInfo.querySelector('.close')
-    closeButton.addEventListener('click', () => {
-      if (this.$imageInfo.style.display === 'block') {
-        this.closeImageInfo()
-      }
-    })
+    const { temperament, origin } = catInfo.data
+    console.log(temperament, origin)
+    const $temperament = this.$imageInfo.querySelector('.temperament')
+    const $origin = this.$imageInfo.querySelector('.origin')
+    $temperament.innerText += ' ' + temperament
+    $origin.innerText += ' ' + origin
   }
 }

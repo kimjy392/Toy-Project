@@ -6,12 +6,21 @@ class App {
   constructor($target) {
     this.$target = $target;
 
-    this.toggleThemeButton()
+    this.data = localStroage.get('data') || []
 
+    this.toggleThemeButton()
     this.searchInput = new SearchInput({
       $target,
       onSearch: keyword => {
-        api.fetchCats(keyword).then(({ data }) => this.setState(data));
+        this.searchResult.$searchResult.style.display = 'none'
+        this.searchResult.$loading.style.display = 'block'
+        api.fetchCats(keyword).then(({ data }) => {
+          this.setState(data)
+          localStroage.set('data', data)
+          localStroage.set('keyword', keyword)
+          this.searchResult.$loading.style.display = 'none'
+          this.searchResult.$searchResult.style.display = 'grid'
+        });
       }
     });
 

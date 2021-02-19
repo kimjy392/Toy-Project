@@ -1,0 +1,33 @@
+.wrap-box {
+  margin: 10px auto;
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  height: 250px;
+}
+
+.box {
+  width : 100%;
+  height: 250px;
+}
+
+.red {
+  background-color : red;
+}
+
+.blue {
+  background-color : blue;
+}
+
+.green {
+  background-color: green;
+}
+
+.black {
+  background-color: black;
+}
+
+.drag {
+  opacity: 0.5;
+}
